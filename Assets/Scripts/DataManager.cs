@@ -45,4 +45,19 @@ public class DataManager : MonoBehaviour
         string jsonData = File.ReadAllText(path);
         playerData = JsonUtility.FromJson<PlayerData>(jsonData);
     }
+    public void LevelUp()
+    {
+        playerData.level++;
+        if ((playerData.level % 5) == 0)
+        {
+            playerData.goalScore += 1500;
+            playerData.bet += 50;
+        }
+    }
+
+    public void EarnMoney(bool b)
+    {
+        int i = b ? 1 : -1;
+        playerData.money += i * playerData.bet;
+    }
 }

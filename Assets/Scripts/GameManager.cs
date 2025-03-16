@@ -184,13 +184,13 @@ public class GameManager : MonoBehaviour
         if (state == State.Win)
         {
             bWin = true;
-            LevelManager.instance.LevelUp();
-            DataManager.instance.playerData.money += DataManager.instance.playerData.bet;
+            DataManager.instance.LevelUp();
+            DataManager.instance.EarnMoney(true);
         }
         else if (state == State.Lose)
         {
             bWin = false;
-            DataManager.instance.playerData.money -= DataManager.instance.playerData.bet;
+            DataManager.instance.EarnMoney(false);
         }
         DataManager.instance.SaveData();
         UIManager.instance.EndBattle(bWin);
